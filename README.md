@@ -1,136 +1,66 @@
-<h1 align="center">Mazer Dashboard</h1>
+## Overview
 
-![Mazer Screenshot](https://user-images.githubusercontent.com/45036724/167523601-9d20fb17-1989-488f-b619-cb53c0db8898.png)
+This project is a responsive dashboard built using **Bootstrap 5**, modern ES6 JavaScript, and ApexCharts for data visualization. It has been enhanced to dynamically display live statistics and charts by **binding frontend components to data from an external API**.
 
-<p align="center">Mazer is an Admin Dashboard Template that can help you develop faster. Made with Bootstrap 5. No jQuery dependency.</p>
-<div align="center">
+## 🔄 What Was Changed
 
-[![All Contributors](https://img.shields.io/github/contributors/zuramai/mazer)](https://github.com/zuramai/mazer/graphs/contributors)
-![GitHub last commit](https://img.shields.io/github/last-commit/zuramai/mazer.svg)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/zuramai/mazer)
-[![License](https://img.shields.io/github/license/zuramai/mazer.svg)](LICENSE)
-
-</div>
-
-<p align="center">
-	<a href="http://zuramai.github.io/mazer/demo">Demo Page</a>&nbsp;&nbsp;&nbsp;
-	<a href="http://zuramai.github.io/mazer/docs">Documentation Page</a>&nbsp;&nbsp;&nbsp;
-	<a href="https://github.com/zuramai/mazer/blob/main/README_INDONESIAN.md">Indonesian README</a>&nbsp;&nbsp;&nbsp;
-</p>
+- **Stat card values** (Profile Views, Followers, Following, Saved Post) are now **populated from `data.json`** at runtime, not hardcoded.
+- **Chart data** (bar and donut charts via ApexCharts) are also **fetched from `API`**, allowing for easy updates and scalability.
+- New or updated **code (`data-binding.js`)** handles fetching/parsing the data file and injecting values into the DOM and chart configs.
+- The **HTML structure** (in `index.html`) was modified to assign unique `id` attributes to stat elements so JavaScript can target and update them.
 
 
-## Installation
+## 📖 How It Works
 
-### Using a ready-made built (recommended)
+1. On page load, `data-binding.js` uses `fetch()` to load `data.json`.
+2. Stat cards and charts are updated automatically to reflect values from the latest data file.
+3. Simply update `data.json` to refresh dashboard figures—no changes to HTML/JS required for new data.
 
-Download the latest release from the [releases page](https://github.com/zuramai/mazer/releases "releases page").
-Open the index HTML file and explore the source code.
+## 🛠️ Key Skills/Demonstrated Concepts
 
-### Building yourself
+- **Understanding and Modifying Existing Code:**
+Retrofitted static dashboard to support dynamic, decoupled data binding.
+- **Frontend-Backend Integration:**
+Seamless update of UI (cards, charts) from a decoupled backend data source.
+- **Bootstrap 5 Proficiency:**
+Maintained a responsive and visually appealing layout using Bootstrap classes and grid.
+- **JavaScript ES6:**
+Utilized `fetch()`, template strings, and object destructuring for clean asynchronous code.
+- **ApexCharts Integration:**
+Updated charts dynamically using `updateOptions()` with data from the JSON file.
+- **Responsiveness \& Clean UI:**
+Maintained mobile-first design, supporting all modern browsers and device sizes.
 
-1. Clone the repository 
-```sh
-git clone https://github.com/zuramai/mazer
+
+## 🚀 Usage Instructions
+
+1. **Clone the repository**
+1. **Run with a local web server!** (Do not open with `file://`).
+Example (in terminal):
+
 ```
-
-2. Install dependencies
-```sh
-yarn install
-# OR
-npm install
-```
-
-3. Run it locally
-```sh
+cd filename
 npm run dev
 ```
 
-4. Open `http://localhost:5173` in your browser
+2. Access the dashboard at [http://localhost:5173//](http://localhost:5173//).
+3. Edit `api` to update dashboard content live.
 
-### Building with Docker
+## 📁 Key Modified Files
 
-- Clone the repository `git clone https://github.com/zuramai/mazer`
-- Make sure you have Docker installed and run:
-    - `docker build -t mazer-frontend .`
-    - `docker run -it -d -p 5173:80 --name mazer mazer-frontend`
-    - Open `http://localhost:5173`
-### Using CDN 
-Simple example using CDN from [jsdelivr.net](https://www.jsdelivr.com/).
+- `index.html` — Added `id` attributes to stats for JS binding
+- `data-binding.js` — Fetches/parses JSON, updates DOM and charts
+- `data.json` — Holds all dashboard stats and chart data
 
-```html
-<!DOCTYPE html>
-<html lang="en">
+**Summary:**
+This project now demonstrates a clear separation between UI and data, modern code practices, and deep understanding of Bootstrap, JavaScript, and integration patterns.
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
 
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/svg/favicon.svg" type="image/x-icon">
+<div style="text-align: center">⁂</div>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/css/app.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/css/app-dark.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/css/iconly.css">
-</head>
+[^1]: index.html
 
-<body>
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/static/js/initTheme.js"></script>
-    <!-- Start content here -->
+[^2]: data.json
 
-    <!-- End content -->
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/static/js/components/dark.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+[^3]: data-binding.js
 
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/js/app.js"></script>
-
-    <!-- Need: Apexcharts -->
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/extensions/apexcharts/apexcharts.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/static/js/pages/dashboard.js"></script>
-</body>
-
-</html>
-```
-
-#### CDN Prefix
-
-You can use the url with a prefix like this:
-```
-https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo
-```
-
-A simple example:
-```
-https://cdn.jsdelivr.net/gh/zuramai/mazer@docs/demo/assets/compiled/css/app.css
-```
-
-## Community Mazer-based open sources
-
-- [CodeIgniter 4](https://github.com/irsyadulibad/mazer-codeigniter) by [@irsyadulibad](https://github.com/irsyadulibad)
-- [Laravel Mazer Starter](https://github.com/billalxcode/laravel-mazer-starter) by [@billalxcode](https://github.com/billalxcode)
-- [Nuxt](https://github.com/fzn0x/mazer-nuxt) by [@fzn0x](https://github.com/fzn0x)
-- [React JS Component Library](https://github.com/fachryansyah/react-mazer-ui) by [@fachryansyah](https://github.com/fachryansyah/)
-- [Adonisjs 5](https://github.com/afman42/mazer-adonisjs) by [@afman42](https://github.com/afman42/)
-- [Django](https://github.com/bimbims125/mazer-django) by [@bimbims125](https://github.com/bimbims125/)
-- [Flask](https://github.com/antheiz/mazer-flask) by [@antheiz](https://github.com/antheiz/)
-- [Symfony 6.3 (Mazer 2.1.0)](https://github.com/TheoD02/mazer-symfony-6.3/tree/mazer-2.1.0) by [@theod02](ttps://github.com/TheoD02)
-- [Spring-Thymeleaf](https://github.com/deyhay-enterprise/spring-project-mazer-template) by [@hi-rullah](https://github.com/hi-rullah)
-- [Ruby on Rails](https://github.com/noesya/mazer-rails) by [@noesya](https://github.com/noesya)
-- [Yii2](https://github.com/anovsiradj/yii2-theme-mazer) by [@anovsiradj](https://github.com/anovsiradj)
-- [Next JS](https://github.com/dipras/next-mazer) by [@dipras](https://github.com/dipras)
-- Did you make in another framework or tools? Open up Pull Requests and put yours here! 😃
-
-## Contributing
-
-Please follow [Contributing Guide](./CONTRIBUTING.md) before contributing.
-
-## License
-
-Mazer is under [MIT License](./LICENSE).
-
-## Author
-
-Mazer is created by <a href="https://saugi.me">Saugi</a>.
-
-## Sponsors
-
-![zuramai's sponsors](https://raw.githubusercontent.com/zuramai/static/main/sponsors.svg)
