@@ -109,7 +109,7 @@ build({
 export default defineConfig((env) => ({
     publicDir: 'static',
     base: '/keshavsoft-task3.0/',
-    root,
+    root: 'src',
     plugins: [
         viteStaticCopy({
             targets: [
